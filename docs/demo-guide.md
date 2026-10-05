@@ -1,6 +1,6 @@
-# Demo guide (3–5 minutes)
+# Demo walkthrough
 
-First execute `make demo` or the Windows task equivalent and verify readiness.
+Start with `make demo` or `./scripts/tasks.ps1 demo` on Windows.
 
 1. Open Overview. Explain that the dataset has synthetic sales through 31 December
    2025, GBP, and simulated operations. KPI values come from persisted resources.
@@ -16,10 +16,5 @@ First execute `make demo` or the Windows task equivalent and verify readiness.
 6. Ask why DEMO-004 should be ordered. Open references and identify the saved run
    and offline tool. Finish with Methodology and download the plan CSV.
 
-Browser evidence: `make e2e` writes actual desktop/mobile dashboard and scenario PNGs
-in `frontend/test-results`. Review them and browser console failures before placing
-a screenshot in README. Saved captures are available in `docs/evidence`.
-
 If readiness fails, inspect `docker compose logs migrate api worker`. If training
-fails, inspect `/api/v1/jobs/{id}?dataset_id=...`. Do not hide a failed comparison or
-replace it with a static favorable result.
+fails, inspect `/api/v1/jobs/{id}?dataset_id=...`.

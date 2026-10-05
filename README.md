@@ -7,7 +7,7 @@ how much, and what happens if a supplier is late? It combines sales forecasts wi
 stock, incoming deliveries, pack sizes and a purchasing budget. Each recommendation
 shows its calculation, and the scenario lab lets you compare the consequences.
 
-![StockPilot dashboard](docs/evidence/desktop-dashboard.png)
+![StockPilot dashboard](docs/results/desktop-dashboard.png)
 
 ## Run the demo
 
@@ -41,7 +41,7 @@ command keeps existing data and reuses the prepared results.
 - Simulate higher demand, delayed deliveries or a tighter budget across three policies.
 - Ask the offline assistant about a product or purchasing policy and inspect its sources.
 
-The interface adapts to desktop and mobile. [Mobile screenshot](docs/evidence/mobile-scenario.png).
+The interface adapts to desktop and mobile. [Mobile screenshot](docs/results/mobile-scenario.png).
 
 ## How it works
 
@@ -77,9 +77,9 @@ On the historical data, the moving average beat XGBoost in validation, but the f
 error remained high. The historical result is a useful limit of this setup, rather
 than evidence that a more complex model always improves the forecast.
 
-The [synthetic manifest](docs/evidence/synthetic-forecast.json),
-[historical manifest](docs/evidence/historical-forecast.json) and
-[policy backtest](docs/evidence/historical-backtest.json) contain the measured results
+The [synthetic manifest](docs/results/synthetic-forecast.json),
+[historical manifest](docs/results/historical-forecast.json) and
+[policy backtest](docs/results/historical-backtest.json) contain the measured results
 and assumptions. The [case study](docs/portfolio-case-study.md) discusses them.
 
 ## Data
@@ -114,12 +114,10 @@ make typecheck
 make e2e
 ```
 
-Local verification on 5 October 2026 passed 49 backend tests, 3 frontend tests and
-6 desktop/mobile browser checks, plus lint, types and the production build.
-The browser checks include axe accessibility scans and the full planning flow.
-An [isolated source installation](docs/evidence/clean-install.md) also reproduced
-the demo with fresh database and artifact volumes. GitHub Actions runs the checks
-without downloading UCI or calling a paid model provider.
+Tests cover data imports, temporal forecasting, inventory rules and the full
+planning flow in desktop and mobile browsers. GitHub Actions runs lint, types,
+tests, the production build and browser checks without downloading UCI or calling
+a paid model provider.
 
 ## Scope and next steps
 

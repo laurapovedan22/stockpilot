@@ -101,10 +101,8 @@ read, a configurable model and total deadline (default 20 seconds), and explicit
 offline fallback. Dataset context is never a model-controlled tool parameter.
 Sources are attached from actual tool results by the server. Public LLM mode is disabled.
 
-## Evidence
+## Results
 
-Synthetic and UCI model evaluation, the historical policy backtest, dependency license
-metadata inventory and desktop/mobile browser checks have been executed locally.
-Measured results, assumptions and limitations are recorded in the [case study](portfolio-case-study.md),
-with actual manifests, backtest records and browser captures in `docs/evidence/`.
-Historical inventory and operating costs are simulated; no business savings are claimed.
+The [case study](portfolio-case-study.md) discusses the synthetic and UCI evaluations.
+Saved forecast runs, the historical policy backtest and screenshots are in
+`docs/results/`. Historical inventory and operating costs are simulated.

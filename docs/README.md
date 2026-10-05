@@ -9,9 +9,9 @@
 | [API](api.md) | Endpoints, errors, versions and public demo limits |
 | [Demo walkthrough](demo-guide.md) | A short tour of the planning flow |
 | [Case study](portfolio-case-study.md) | Problem, results and limitations |
-| [Deployment](deployment.md) | Local operation and hosting considerations |
+| [Configuration](setup.md) | Ports, stored data, demo mode and troubleshooting |
 | [Architecture decisions](adr/) | Recorded choices and alternatives |
-| [Evidence](evidence/) | Forecast manifests, backtest and browser captures |
+| [Results](results/) | Forecast runs, backtest and screenshots |
 | [Dependency licenses](dependency-licenses.md) | Installed package license metadata |
 
 Start with [the repository README](../README.md) to run the demo.

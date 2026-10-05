@@ -37,7 +37,7 @@ policy using empirical uncertainty. The latter also bought more: £183,180 versu
 £111,465. Better simulated service came with higher purchasing, so these results
 cannot be described as net savings.
 
-The [forecast manifests](evidence/) and [backtest record](evidence/historical-backtest.json)
+The [forecast manifests](results/) and [backtest record](results/historical-backtest.json)
 include the evaluation windows and assumptions. The inventory, suppliers and
 acquisition costs in this historical experiment are simulated, not reconstructed
 business records.
