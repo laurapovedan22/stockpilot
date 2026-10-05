@@ -49,12 +49,4 @@ On Windows, `./scripts/tasks.ps1 test-integration` starts the test database, app
 migrations and runs integration tests. `make test` skips integration tests when
 `TEST_DATABASE_URL` is absent. Tests must not point at a database containing real data.
 
-## Data and schema changes
 
-Queries must stay within the selected dataset. Stock changes create snapshots;
-saved recommendations and decisions retain their original inputs. Decision events
-are append-only. Add Alembic revisions rather than editing the initial migration.
-
-Temporal evaluation uses only observations available at each cutoff. Label simulated
-data and keep purchases separate from operating cost when reporting policy results.
-Updating a result requires its reproducible evidence.
