@@ -3,7 +3,7 @@
 The backend and frontend are kept as separate packages. The frontend is mainly responsible for displaying the results returned by the API, while the backend handles the calculations and business logic.
 Some notes about the main design decisions and project structure are available in [Design notes](docs/design-notes.md) 
 
-or local development, you will need Python 3.12, uv, Node 22 and npm.
+For local development, you will need Python 3.12, uv, Node 22 and npm.
 
 Run:
 
