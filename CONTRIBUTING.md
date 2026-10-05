@@ -1,52 +1,89 @@
 # Working on StockPilot
 
-The backend and frontend are separate packages. 
-Frontend components display API results rather than recomputing purchase quantities.
-[Design notes](docs/design-notes.md) explain the main boundaries.
+The backend and frontend are kept as separate packages. The frontend is mainly responsible for displaying the results returned by the API, while the backend handles the calculations and business logic.
+Some notes about the main design decisions and project structure are available in [Design notes](docs/design-notes.md) 
 
-## Local setup
+or local development, you will need Python 3.12, uv, Node 22 and npm.
 
-Install Python 3.12, uv, Node 22 and npm. Run `make setup` to install dependencies,
-then `make demo` to start Docker services and prepare sample data. On Windows use
-`./scripts/tasks.ps1 setup` and `./scripts/tasks.ps1 demo`.
+Run:
 
-Run `npm run dev` from `frontend` for frontend development; Vite proxies `/api` to
-port 8000. Backend development uses `uv run uvicorn stockpilot.main:app --reload`
-and `uv run python -m stockpilot.worker.main` in separate terminals from `backend`,
-with `DATABASE_URL` pointing to a local PostgreSQL database.
+make setup
+make demo
 
-Copy `.env.example` to `.env` if needed. Keep credentials, raw datasets, generated
-models and local environments out of Git.
+make setup installs the required dependencies, while make demo starts the Docker services and prepares the sample data used by the application.
 
-## Check a change
+On Windows, the equivalent commands are:
 
-```sh
+./scripts/tasks.ps1 setup
+./scripts/tasks.ps1 demo
+
+For frontend development, run:
+
+cd frontend
+npm run dev
+
+Vite proxies requests to /api to the backend running on port 8000.
+
+For backend development, I normally run the API and the worker in separate terminals from the backend directory:
+
+uv run uvicorn stockpilot.main:app --reload
+
+uv run python -m stockpilot.worker.main
+
+DATABASE_URL should point to a local PostgreSQL database.
+
+If environment variables are needed, copy .env.example to .env. Credentials, raw datasets, generated models and local environments should not be committed to Git.
+
+Checking changes
+
+Before committing changes, I normally run:
+
 make lint
 make typecheck
 make test
+
 cd frontend
 npm run format:check
 npm run build
-```
 
-Python uses Ruff formatting; frontend files use Prettier. Run
-`uv run ruff format src tests migrations` from `backend`, or `npm run format` from
-`frontend`. For interface changes, run `make e2e` against the prepared demo and inspect
-the desktop/mobile captures in `frontend/test-results`.
+The Python code is formatted with Ruff, while the frontend uses Prettier.
 
-PostgreSQL integration tests require a separate migrated database:
+To format the backend manually:
 
-```sh
-docker compose -f compose.test.yaml up -d --wait
 cd backend
+uv run ruff format src tests migrations
+
+For the frontend:
+
+cd frontend
+npm run format
+
+When changing the interface, it is also useful to run:
+
+make e2e
+
+This runs the end-to-end tests against the demo environment. Desktop and mobile captures are stored in frontend/test-results, which makes it easier to check that the UI still behaves correctly.
+
+PostgreSQL integration tests
+
+Integration tests use a separate PostgreSQL database. It can be started with:
+
+docker compose -f compose.test.yaml up -d --wait
+
+cd backend
+
 export DATABASE_URL='postgresql+psycopg://stockpilot:stockpilot@127.0.0.1:5433/stockpilot_test?connect_timeout=5'
 export TEST_DATABASE_URL="$DATABASE_URL"
+
 uv run --locked alembic upgrade head
 uv run --locked pytest
-```
 
-On Windows, `./scripts/tasks.ps1 test-integration` starts the test database, applies
-migrations and runs integration tests. `make test` skips integration tests when
-`TEST_DATABASE_URL` is absent. Tests must not point at a database containing real data.
+On Windows, this can be done directly with:
 
+./scripts/tasks.ps1 test-integration
 
+This starts the test database, applies the migrations and runs the integration tests.
+
+If TEST_DATABASE_URL is not defined, make test skips the PostgreSQL integration tests.
+
+The test configuration should always use a dedicated test database and should never point to a database containing real data.
