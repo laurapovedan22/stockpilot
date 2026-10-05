@@ -1,7 +1,6 @@
 # Working on StockPilot
 
-The backend and frontend are separate packages. Keep inventory and forecasting
-calculations in Python domain modules, transactions in services and HTTP in routers.
+The backend and frontend are separate packages. 
 Frontend components display API results rather than recomputing purchase quantities.
 [Design notes](docs/design-notes.md) explain the main boundaries.
 
