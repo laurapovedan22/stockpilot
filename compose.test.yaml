@@ -1,0 +1,14 @@
+name: stockpilot-tests
+services:
+  db:
+    image: postgres:16.8-bookworm
+    environment:
+      POSTGRES_DB: stockpilot_test
+      POSTGRES_USER: stockpilot
+      POSTGRES_PASSWORD: stockpilot
+    ports: ['127.0.0.1:5433:5432']
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U stockpilot -d stockpilot_test']
+      interval: 2s
+      timeout: 5s
+      retries: 20

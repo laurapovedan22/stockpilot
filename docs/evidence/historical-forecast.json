@@ -1,0 +1,106 @@
+{
+  "dataset_id": "83f06f5b-4060-54f8-a9d3-70bd643498e3",
+  "cutoff": "2011-12-08",
+  "seed": 42,
+  "checksum": "faafa858ae4b4731dbc0e6060d76cf62698befed502d7bb5fd4070e072aaea98",
+  "model": "moving_average",
+  "horizon": 42,
+  "elapsed_seconds": 7.7713413539986504,
+  "hardware": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "processor": "",
+    "machine": "x86_64",
+    "logical_cpus": 16
+  },
+  "python": "3.12.10",
+  "commit": "unversioned",
+  "products": 20,
+  "rows": 14448,
+  "metrics": {
+    "validation": {
+      "seasonal_naive": {
+        "mae": 92.46130952380952,
+        "rmse": 234.88640491583524,
+        "wape": 1.2029816069699903,
+        "bias": -0.07958954501452081,
+        "denominator": 129125.0,
+        "absolute_error": 155335.0,
+        "null_reason": null
+      },
+      "moving_average": {
+        "mae": 82.03971088435374,
+        "rmse": 197.996016406278,
+        "wape": 1.06738984926013,
+        "bias": -0.02337270087124879,
+        "denominator": 129125.0,
+        "absolute_error": 137826.7142857143,
+        "null_reason": null
+      },
+      "xgboost": {
+        "mae": 84.97475452566785,
+        "rmse": 196.7776011528206,
+        "wape": 1.1055766706921355,
+        "bias": 0.17168661695874557,
+        "denominator": 129125.0,
+        "absolute_error": 142757.587603122,
+        "null_reason": null
+      }
+    },
+    "test": {
+      "mae": 78.94591836734693,
+      "rmse": 181.24180611316822,
+      "wape": 0.8755959336458831,
+      "bias": 0.002099384048642346,
+      "denominator": 50491.0,
+      "absolute_error": 44209.71428571428,
+      "null_reason": null,
+      "coverage_90": 0.8464285714285714
+    },
+    "calibration_samples_per_product": {
+      "e50f673c-fa14-4db4-86b2-b97bc4d6e19a": 1680,
+      "dcdcd5b0-7177-4b69-86fc-b7b7d1287c42": 1680,
+      "1c919a54-a4a2-4de2-ac23-0eb011ea049b": 1680,
+      "62e0e2d2-8d7f-4f59-a9be-5240bb77eda4": 1680,
+      "142e475e-f9ab-4d62-bc24-84d293ba4e15": 1680,
+      "15315b64-36d5-40a3-9bcd-6bdd449c7f77": 1680,
+      "95fa61d3-383e-4aac-9708-95a92c70a7d3": 1680,
+      "82102ced-29a5-467e-90da-69017705c197": 1680,
+      "c5bd7293-a85d-4d39-b737-6bd6328af95c": 1680,
+      "e150a552-f286-4ddd-a7cc-1bee3c6f7f4d": 1680,
+      "5dbc76f3-3aaa-4f50-b184-846bf156dda7": 1680,
+      "c23b765b-cabb-40f5-b565-5a491eafd078": 1680,
+      "a8b9def0-9f49-4013-a4b9-30a7c187e197": 1680,
+      "232e1d2e-e27e-44e9-be38-3820e1152480": 1680,
+      "2a584a36-a513-4259-b684-cd65885d19e7": 1680,
+      "3b02c2d2-a30e-41f4-9214-e8e360dcfdc6": 1680,
+      "711310d6-f7ae-4525-9d07-591e5b886c1a": 1680,
+      "36c8fa24-5a2e-4063-9a26-5c1cf542388f": 1680,
+      "8856a8b9-449e-4a7e-afe1-e1c3a763c4cd": 1680,
+      "f5a1a212-127d-49b6-b50d-631ae066c760": 1680
+    },
+    "calibration_scope": {
+      "e50f673c-fa14-4db4-86b2-b97bc4d6e19a": "grouped",
+      "dcdcd5b0-7177-4b69-86fc-b7b7d1287c42": "grouped",
+      "1c919a54-a4a2-4de2-ac23-0eb011ea049b": "grouped",
+      "62e0e2d2-8d7f-4f59-a9be-5240bb77eda4": "grouped",
+      "142e475e-f9ab-4d62-bc24-84d293ba4e15": "grouped",
+      "15315b64-36d5-40a3-9bcd-6bdd449c7f77": "grouped",
+      "95fa61d3-383e-4aac-9708-95a92c70a7d3": "grouped",
+      "82102ced-29a5-467e-90da-69017705c197": "grouped",
+      "c5bd7293-a85d-4d39-b737-6bd6328af95c": "grouped",
+      "e150a552-f286-4ddd-a7cc-1bee3c6f7f4d": "grouped",
+      "5dbc76f3-3aaa-4f50-b184-846bf156dda7": "grouped",
+      "c23b765b-cabb-40f5-b565-5a491eafd078": "grouped",
+      "a8b9def0-9f49-4013-a4b9-30a7c187e197": "grouped",
+      "232e1d2e-e27e-44e9-be38-3820e1152480": "grouped",
+      "2a584a36-a513-4259-b684-cd65885d19e7": "grouped",
+      "3b02c2d2-a30e-41f4-9214-e8e360dcfdc6": "grouped",
+      "711310d6-f7ae-4525-9d07-591e5b886c1a": "grouped",
+      "36c8fa24-5a2e-4063-9a26-5c1cf542388f": "grouped",
+      "8856a8b9-449e-4a7e-afe1-e1c3a763c4cd": "grouped",
+      "f5a1a212-127d-49b6-b50d-631ae066c760": "grouped"
+    },
+    "warnings": [],
+    "interval_method": "Signed horizon residual quantiles (product with >=10 sequences, grouped otherwise), central envelope; seven-day product blocks with grouped fallback"
+  }
+}

@@ -1,0 +1,2 @@
+external_order_id,product_sku,quantity_units,expected_arrival_date
+SAMPLE-PO-1,00012,20,2024-01-08

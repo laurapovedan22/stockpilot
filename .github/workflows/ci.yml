@@ -1,0 +1,56 @@
+name: StockPilot checks
+on: [push, pull_request]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16.8-bookworm
+        env: { POSTGRES_DB: stockpilot_test, POSTGRES_USER: stockpilot, POSTGRES_PASSWORD: stockpilot }
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U stockpilot -d stockpilot_test" --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+psycopg://stockpilot:stockpilot@localhost:5432/stockpilot_test
+      TEST_DATABASE_URL: postgresql+psycopg://stockpilot:stockpilot@localhost:5432/stockpilot_test
+      AI_ENABLED: 'false'
+    defaults: { run: { working-directory: backend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: { version: '0.12.10', python-version: '3.12' }
+      - run: uv sync --locked
+      - run: uv run alembic upgrade head
+      - run: uv run ruff check src tests migrations
+      - run: uv run mypy src
+      - run: uv run pytest
+  frontend:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: frontend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22.14.0' }
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+  demo-e2e:
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22.14.0' }
+      - run: make demo
+      - run: npm ci
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: npm run e2e
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: real-browser-evidence, path: 'frontend/test-results/' }
+      - run: docker compose logs --no-color
+        if: failure()

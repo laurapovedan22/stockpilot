@@ -1,0 +1,4 @@
+external_row_id,invoice_id,product_sku,description,quantity,unit_price,invoice_datetime,country
+INVALID-1,I1,00012,Ceramic cup,1.5,5.50,2024-01-01T12:00:00,United Kingdom
+INVALID-2,I2,,Missing SKU,3,5.50,2024-01-02T12:00:00,United Kingdom
+INVALID-3,I3,00012,Bad date,1,5.50,2024-02-30T12:00:00,United Kingdom

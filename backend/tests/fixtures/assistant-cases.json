@@ -1,0 +1,7 @@
+[
+  {"question":"Why should I order DEMO-004?","expected_tool":"get_recommendation_explanation","requires":"demo recommendation","expected_text":["target 100.0", "position 45", "60 requested", "60 allocated"]},
+  {"question":"What purchasing constraints apply?","expected_tool":"search_policy","expected_source":"buying-policy.md"},
+  {"question":"What changes if delivery takes four extra days?","expected_tool":"preview_scenario","must_not_create_scenario":true},
+  {"question":"Why should I order DEMO-999?","expected_tool":"get_recommendation_explanation","expected_sources":[]},
+  {"question":"galactic submarine quarks","expected_tool":"search_policy","expected_sources":[],"expected_text":["No relevant policy source found"]}
+]

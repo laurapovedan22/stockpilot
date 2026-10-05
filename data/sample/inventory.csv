@@ -1,0 +1,2 @@
+product_sku,on_hand_units,reserved_units,unit_cost,currency,supplier_code,lead_time_days,pack_size,minimum_order_units,holding_cost_per_unit_day,stockout_penalty_per_unit
+00012,30,5,2.50,GBP,SAMPLE-SUPPLIER,7,12,24,0.015,2.00

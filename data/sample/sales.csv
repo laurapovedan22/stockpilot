@@ -1,0 +1,4 @@
+external_row_id,invoice_id,product_sku,description,quantity,unit_price,invoice_datetime,country
+SAMPLE-1,INV-1,00012,Ceramic cup,6,5.50,2024-01-01T12:00:00,United Kingdom
+SAMPLE-2,INV-2,00012,,3,5.50,2024-01-02T12:00:00,United Kingdom
+SAMPLE-3,CINV-3,00012,Ceramic cup,-1,5.50,2024-01-03T12:00:00,United Kingdom
